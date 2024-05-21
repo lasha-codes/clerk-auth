@@ -1,7 +1,6 @@
 import { currentUser } from '@clerk/nextjs/server'
 import { UserButton } from '@clerk/nextjs'
 import Link from 'next/link'
-currentUser
 
 const Header = async () => {
   const user = await currentUser()
@@ -33,7 +32,14 @@ const Header = async () => {
               </Link>
             </>
           )}
-          <UserButton />
+          <div className='flex items-center gap-5'>
+            {user && (
+              <Link href='profile' className='text-gray-300 hover:text-white'>
+                Profile
+              </Link>
+            )}
+            <UserButton />
+          </div>
         </div>
       </nav>
     </>
